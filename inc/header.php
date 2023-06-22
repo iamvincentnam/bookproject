@@ -15,13 +15,14 @@
     border:none;
     width: 90px; height: 90px;}
 
-section .logo:hover{transform: translate(2rem);}
-section .logo{transition:.4s; cursor: pointer;}
+
         body {
   --bs-body-font-family: var(--bs-font-monospace);
   --bs-body-line-height: 1.4;
   --bs-body-bg: var(--bs-gray-100);
         }
+section .logo:hover{transform: translate(.5rem);}
+section .logo{transition:.4s; cursor: pointer;}
         input::placeholder{color: #5f5f5f95 !important;}
 .nav{ height: 60px;}
             .nav ul {

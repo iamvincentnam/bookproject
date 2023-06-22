@@ -1,9 +1,24 @@
 <?php  include 'inc/header.php'; ?>
-<?php  
-$sql = "SELECT * FROM books;";
-$result = mysqli_query($connection,$sql);
-$schoolFinder= mysqli_fetch_all($result, MYSQLI_ASSOC);
-$books=$schoolFinder;
+<?php 
+$nobooks_table='';
+ $tableName = 'books';
+
+
+ //Check if the table Exists
+$tableExistsQuery ="SHOW TABLES LIKE 'books';";
+$tableExistsResults = mysqli_query($connection, $tableExistsQuery);
+
+if(mysqli_num_rows($tableExistsResults) == 0){
+  $nobooks_table='<p class="lead text-danger p-2 text-center fw-bold"> THERE IS NO TABLE AVAILABLE
+  </p>';
+}
+else{
+  $sql = "SELECT * FROM books;";
+  $result = mysqli_query($connection,$sql);
+  $schoolFinder= mysqli_fetch_all($result, MYSQLI_ASSOC);
+  $books=$schoolFinder;
+}
+
 // to locate a specific book
 
 // $id ='';
@@ -37,10 +52,11 @@ else{echo 'ERROR'. mysqli_error($connection);}
   <h1 class=" text-center text-light-50"> BOOK CATALOGUE</h1>
 </div>
 
-       <div class="row col-12 mx-auto my-5 ">
+  <div class="row col-12 mx-auto my-5 ">
+    <?php echo $nobooks_table;?>
 
-       <?php if(empty($books)): ?>
-  <p class="lead text-danger p-2 text-center fw-bold">
+ <?php if(empty($books)): ?>
+  <p class="lead text-primary p-2 text-center fw-bold">
   THERE IS NO Book AVAILABLE
  </p>
  <?php endif; ?>
