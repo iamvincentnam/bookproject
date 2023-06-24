@@ -77,10 +77,10 @@ section .logo{transition:.4s; cursor: pointer;}
         </div>
         <div id="links" class="col-lg-6 flex-wrap">
             <ul class="d-flex  justify-content-around align-items-center m-0 p-0 ">
-                <li><a href="http://localhost/bookProject/index.php"> Home </a></li>
-                <li><a href="http://localhost/bookProject/about.php">About</a></li>
-                
-                <li><a href="#">Search</a></li>
+                <li><a href="http://localhost/bookProject/index.php" class="<?= $_SERVER["REQUEST_URI"] == "/bookProject/index.php" ? "bg-light text-secondary py-1 px-3 rounded" : ''; ?>"> Home </a></li>
+                <li><a href="http://localhost/bookProject/about.php" class="<?= $_SERVER["REQUEST_URI"] == "/bookProject/about.php" ? "bg-light text-secondary py-1 px-3 rounded" : ''; ?>">About</a></li>
+               
+                <li><a href="http://localhost/bookProject/search.php" class="<?= $_SERVER["REQUEST_URI"] == "/bookProject/search.php" ? "bg-light text-secondary py-1 px-3 rounded" : ''; ?>">Search</a></li>
             </ul>
 
         </div>
