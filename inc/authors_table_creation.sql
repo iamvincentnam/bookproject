@@ -5,7 +5,7 @@ CREATE TABLE authors (
   nationality VARCHAR(255) NOT NULL,
   born_in VARCHAR(255) NOT NULL,
   author_img VARCHAR(255) NOT NULL DEFAULT 'placeholder.jpg',
-  biography LONGTEXT
+  biography LONGTEXT NOT NULL
 );
 
 INSERT INTO authors (author_name, nationality, born_in, author_img, biography)
