@@ -13,7 +13,10 @@ if(mysqli_num_rows($tableExistsResults) == 0){
   </p>';
 }
 else{
-  $sql = "SELECT * FROM books;";
+  $sql = "SELECT *
+  FROM authors
+  INNER JOIN books ON authors.id = books.author_table_id
+  ORDER BY books.title ASC;";
   $result = mysqli_query($connection,$sql);
   $schoolFinder= mysqli_fetch_all($result, MYSQLI_ASSOC);
   $books=$schoolFinder;
@@ -33,20 +36,24 @@ if (isset($_GET['book_id'])) {
   echo "Clicked book ID: " . $clickedBookId;
 
   //select a row of  a particular book
-  $each_book_query = "SELECT * FROM books WHERE id = '$clickedBookId';";
-  $each_book_result = mysqli_query($connection, $each_book_query);
+  $each_book_query = "SELECT *
+  FROM authors
+  INNER JOIN books ON authors.id = books.author_table_id
+  WHERE book_id = $clickedBookId;";
+$each_book_result = mysqli_query($connection, $each_book_query);
 
-if($each_book_result){
-  $each_book_data = mysqli_fetch_assoc ($each_book_result);
-  $clickedBooktitle =$each_book_data['title'];
+if ($each_book_result) {
+  $each_book_data = mysqli_fetch_assoc($each_book_result);
+  $clickedBooktitle = $each_book_data['title'];
 
-  $serialize_data = serialize($each_book_data);
-  $url = 'http://localhost/bookProject/each_book_info.php?data='. urldecode($serialize_data);
-  header('Location:' . $url); 
+  // Redirect to the dedicated page passing book_id as a parameter
+  header('Location: each_book_info.php?book_id=' . $clickedBookId);
   exit();
+} else {
+  echo 'ERROR'. mysqli_error($connection);
 }
-else{echo 'ERROR'. mysqli_error($connection);}
 }
+
 ?>
 <div class="row col-12 mt-5 mb-0">
   <h1 class=" text-center text-light-50"> BOOK CATALOGUE</h1>
@@ -79,7 +86,7 @@ else{echo 'ERROR'. mysqli_error($connection);}
                 <?Php echo $book['title'] ;?>
                </td>
               <td>
-                <?Php echo $book['author'] ;?>
+                <?Php echo $book['author_name'] ;?>
               </td>
               <td class="text-center">
                 <?Php echo $book['released_year'] ;?>

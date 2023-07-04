@@ -61,6 +61,15 @@ section .logo{transition:.4s; cursor: pointer;}
       table td, table th{cursor: pointer;}
       table tr:nth-of-type(even){background-color: #d2c361e2;}
       
+      .custom-card-height{ height: 420px;
+        max-width: 300px;}
+        .custom-card-height h5{cursor: pointer;}
+        .custom-card-height h5:hover{text-decoration: underline; color: purple !important; }
+      .custom-card-height .card-img-top{ max-height: 250px; /* Adjust the max-height of the image to prevent overflow */
+  object-fit:'';}
+  .author_card{height: 370px;
+        max-width: 250px;}
+  .author_img{width: 180px; height: 180px;}
     </style>
     <title>MyBook CATALOGUE
     </title>
@@ -71,7 +80,7 @@ section .logo{transition:.4s; cursor: pointer;}
         <div class="container ">
         <div class="row ">
         
-       <div class="col-md-12 nav d-flex justify-content-between align-items-center px-3 bg-dark shadow-lg">
+       <div class="col-md-12 nav d-flex justify-content-between align-items-center px-3 bg-dark shadow-lg" >
         <div class="logo col-6 ">
             <p class="lead text-white fw-bold m-0 p-0 ">Book<i class="bi bi-book text-danger"></i></i></p>
         </div>
@@ -80,7 +89,7 @@ section .logo{transition:.4s; cursor: pointer;}
                 <li><a href="http://localhost/bookProject/index.php" class="<?= $_SERVER["REQUEST_URI"] == "/bookProject/index.php" ? "bg-light text-secondary py-1 px-3 rounded" : ''; ?>"> Home </a></li>
                 <li><a href="http://localhost/bookProject/about.php" class="<?= $_SERVER["REQUEST_URI"] == "/bookProject/about.php" ? "bg-light text-secondary py-1 px-3 rounded" : ''; ?>">About</a></li>
                
-                <li><a href="http://localhost/bookProject/search.php" class="<?= $_SERVER["REQUEST_URI"] == "/bookProject/search.php" ? "bg-light text-secondary py-1 px-3 rounded" : ''; ?>">Search</a></li>
+                <li><a href="http://localhost/bookProject/author.php" class="<?= $_SERVER["REQUEST_URI"] == "/bookProject/author.php" ? "bg-light text-secondary py-1 px-3 rounded" : ''; ?>">Authors</a></li>
             </ul>
 
         </div>
