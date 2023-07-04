@@ -3,20 +3,20 @@
 <?php 
 $clicked_author_id = '';
 
-if(isset($_GET['author_id'])){
-    $clicked_author_id = $_GET['author_id'];
-    echo $clicked_author_id; 
+// if(isset($_GET['author_id'])){
+//     $clicked_author_id = $_GET['author_id'];
+//     echo $clicked_author_id; 
     
-    $each_author_query ="SELECT *
-    FROM authors WHERE id =$clicked_author_id ;";
-    $each_author_result = mysqli_query($connection,$each_author_query);
+//     $each_author_query ="SELECT *
+//     FROM authors WHERE id =$clicked_author_id ;";
+//     $each_author_result = mysqli_query($connection,$each_author_query);
 
-    $each_author_data =mysqli_fetch_assoc($each_author_result);
-    $serialize_data = serialize($each_author_data);
-  $url = 'http://localhost/bookProject/each_author_info.php?data='. urldecode($serialize_data);
-  header('Location:' . $url); 
-  exit();
-  }
+//     $each_author_data =mysqli_fetch_assoc($each_author_result);
+//     $serialize_data = serialize($each_author_data);
+//   $url = 'http://localhost/bookProject/each_author_info.php?data='. urldecode($serialize_data);
+//   header('Location:' . $url); 
+//   exit();
+//   }
 
 $sql = "SELECT *
   FROM authors;";
@@ -34,7 +34,7 @@ $sql = "SELECT *
                 <p class="text-muted fw-bold m-0">Born In</p>
                 <p><?= $author['born_in']; ?></p>
                 </div>
-                <a href="<?php echo $_SERVER["PHP_SELF"]; ?>?author_id=<?= $author['id']; ?>" class="btn px-1 text-white bg-danger shadow float-end mb-2" name="author_"> Read More</a>
+                <a href="each_author_info.php?id=<?=$author['id'];?>" class="btn px-1 text-white bg-danger shadow float-end mb-2" name="author"> Read More</a>
 
 
               </div>

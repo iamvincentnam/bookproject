@@ -14,12 +14,43 @@
  .img_thumbnail img{border-radius: 50%;
     border:none;
     width: 90px; height: 90px;}
-
-
+    .largeThumbnail{
+border: 2px solid purple;
+height: 80%;
+width: 70%;
+margin: 2rem auto;
+padding: 0 !important;
+/* border-radius: 10px; */
+position: relative;
+box-sizing: border-box;
+top:0em;
+z-index: 10;
+display: none;
+}
+    .largeThumbnail img{
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    margin: 0;
+}
+.largeThumbnail #closeIcon{position: absolute;
+right:-.4rem;
+top:-10px;
+cursor: pointer;
+margin: 0;
+padding: 0;
+transition: 0.2s ease-in-out all ;
+background-color: #1b3c6a74;
+transform: scale(0.9)}
+.largeThumbnail #closeIcon:hover{
+background-color: #1b3c6a;
+transform: scale(1.1);
+}
         body {
   --bs-body-font-family: var(--bs-font-monospace);
   --bs-body-line-height: 1.4;
   --bs-body-bg: var(--bs-gray-100);
+  position: relative;
         }
 section .logo:hover{transform: translate(.5rem);}
 section .logo{transition:.4s; cursor: pointer;}
@@ -58,18 +89,40 @@ section .logo{transition:.4s; cursor: pointer;}
     /* table tr:nth-of-type(n+2):hover{scale: 1.01;} */
     /* table tr:nth-of-type(1):hover{scale: 1 } */
     table tr{height: 50px;transition: all .2s;}
-      table td, table th{cursor: pointer;}
-      table tr:nth-of-type(even){background-color: #d2c361e2;}
+      table td, table th{
+        cursor: pointer;
+    }
+      table tr:nth-of-type(even){
+        background-color: #d2c361e2;
+    }
       
-      .custom-card-height{ height: 420px;
-        max-width: 300px;}
-        .custom-card-height h5{cursor: pointer;}
-        .custom-card-height h5:hover{text-decoration: underline; color: purple !important; }
+      .custom-card-height{
+         height: 420px;
+        max-width: 300px;
+    }
+        .custom-card-height h5{
+            cursor: pointer;
+        }
+        .custom-card-height h5:hover,.each_book_title:hover{text-decoration: underline; color: purple !important; }
+        .each_book_title{cursor:grab;}
       .custom-card-height .card-img-top{ max-height: 250px; /* Adjust the max-height of the image to prevent overflow */
   object-fit:'';}
-  .author_card{height: 370px;
-        max-width: 250px;}
-  .author_img{width: 180px; height: 180px;}
+  .author_card
+  {height: 370px;
+    max-width: 250px;}
+
+.nav_logo{text-decoration: none;}
+  .author_img
+  {
+    width: 180px; 
+    height: 180px;}
+  .go_back_to_home{
+    cursor: pointer; 
+    transition: .3s ease-in-out all;}
+  .go_back_to_home:hover
+  { background-color:#7f7f7f !important; font-weight: bold !important;}
+  .each_book_data_author_name{transition: .2s ease-in-out all;cursor: pointer;}
+  .each_book_data_author_name:hover{ text-decoration: underline; font-weight: bold;}
     </style>
     <title>MyBook CATALOGUE
     </title>
@@ -82,7 +135,7 @@ section .logo{transition:.4s; cursor: pointer;}
         
        <div class="col-md-12 nav d-flex justify-content-between align-items-center px-3 bg-dark shadow-lg" >
         <div class="logo col-6 ">
-            <p class="lead text-white fw-bold m-0 p-0 ">Book<i class="bi bi-book text-danger"></i></i></p>
+            <a href="http://localhost/bookProject/index.php" class="lead text-white fw-bold m-0 p-0 nav_logo">Book<i class="bi bi-book text-danger"></i></i></a>
         </div>
         <div id="links" class="col-lg-6 flex-wrap">
             <ul class="d-flex  justify-content-around align-items-center m-0 p-0 ">

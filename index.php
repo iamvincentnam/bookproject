@@ -16,42 +16,9 @@ else{
   $sql = "SELECT *
   FROM authors
   INNER JOIN books ON authors.id = books.author_table_id
-  ORDER BY books.title ASC;";
+  ORDER BY books.book_id;";
   $result = mysqli_query($connection,$sql);
-  $schoolFinder= mysqli_fetch_all($result, MYSQLI_ASSOC);
-  $books=$schoolFinder;
-}
-
-// to locate a specific book
-
-// $id ='';
-// if(isset($_GET['book_row'])){
-//   $id =$_GET['book_row'];
-//   echo $id;
-// }
-$clickedBookId ='';
-if (isset($_GET['book_id'])) {
-  $clickedBookId = $_GET['book_id'];
-  // Do something with the clicked book ID
-  echo "Clicked book ID: " . $clickedBookId;
-
-  //select a row of  a particular book
-  $each_book_query = "SELECT *
-  FROM authors
-  INNER JOIN books ON authors.id = books.author_table_id
-  WHERE book_id = $clickedBookId;";
-$each_book_result = mysqli_query($connection, $each_book_query);
-
-if ($each_book_result) {
-  $each_book_data = mysqli_fetch_assoc($each_book_result);
-  $clickedBooktitle = $each_book_data['title'];
-
-  // Redirect to the dedicated page passing book_id as a parameter
-  header('Location: each_book_info.php?book_id=' . $clickedBookId);
-  exit();
-} else {
-  echo 'ERROR'. mysqli_error($connection);
-}
+  $books= mysqli_fetch_all($result, MYSQLI_ASSOC);
 }
 
 ?>
@@ -79,8 +46,8 @@ if ($each_book_result) {
               <tbody>
           <?php foreach($books as $book):
                 ?>
-            <tr class="book_row" name="book_row" onclick="window.location.href='?book_id=<?php echo $book['id']; ?>'">
-              <th scope="row" class="text-center text-black-50"><?Php echo $book['id'] ;?>
+            <tr class="book_row" name="book_row" onclick="window.location.href='each_book_info.php?book_id=<?=$book['book_id'] ?>'">
+              <th scope="row" class="text-center text-black-50"><?Php echo $book['book_id'] ;?>
               </th>
               <td>
                 <?Php echo $book['title'] ;?>

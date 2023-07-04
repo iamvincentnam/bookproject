@@ -11,5 +11,5 @@ $connection = mysqli_connect($databaseServerName,$databaseUserName,$databasePass
 if($connection->connect_error){
     die('connection to the database has failed'. $connection->connect_error);
 }
-echo "CONNECTED";
+// echo "CONNECTED";
 ?>
