@@ -2,22 +2,12 @@
 
 <?php
 $data =$_GET['book_id'];
-$sql=" SELECT * from authors INNER JOIN  books  ON authors.id = books.author_table_id where books.book_id =$data;";
 
-$one_book_result = mysqli_query($connection, $sql);
+$query= "SELECT * from authors INNER JOIN  books  ON authors.id = books.author_table_id where books.book_id =$data;";
 
-if ($one_book_result) {
-  $one_book_data = mysqli_fetch_assoc($one_book_result);
-} ?>
-<?php include_once 'inc/header.php'; ?>
+$one_book_data =fetch_Data_from_Database($query,'fetch');
 
-<?php 
-
-//}
-//  $serialize_data =$_GET['data'];
-// $each_book_data = unserialize(urldecode($serialize_data));
 ?>
-
 
 <section id="about" class="about-section-padding bg-light m-0 py-4">
   

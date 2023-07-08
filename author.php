@@ -2,26 +2,9 @@
 
 <?php 
 $clicked_author_id = '';
-
-// if(isset($_GET['author_id'])){
-//     $clicked_author_id = $_GET['author_id'];
-//     echo $clicked_author_id; 
-    
-//     $each_author_query ="SELECT *
-//     FROM authors WHERE id =$clicked_author_id ;";
-//     $each_author_result = mysqli_query($connection,$each_author_query);
-
-//     $each_author_data =mysqli_fetch_assoc($each_author_result);
-//     $serialize_data = serialize($each_author_data);
-//   $url = 'http://localhost/bookProject/each_author_info.php?data='. urldecode($serialize_data);
-//   header('Location:' . $url); 
-//   exit();
-//   }
-
-$sql = "SELECT *
+$query = "SELECT *
   FROM authors;";
-  $result = mysqli_query($connection,$sql);
-  $authors= mysqli_fetch_all($result, MYSQLI_ASSOC);
+  $authors =fetch_Data_from_Database($query,'fetchAll')
   ?>
 <div class="row my-4 g-2">
   <?php  foreach($authors as $author):?>
@@ -42,10 +25,5 @@ $sql = "SELECT *
           </div>
           <?php endforeach; ?>
 
-
-         
-
-
-          
         </div>
 <?php  include 'inc/footer.php'; ?>

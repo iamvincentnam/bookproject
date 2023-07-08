@@ -1,12 +1,11 @@
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-START TRANSACTION;
 SET time_zone = "+00:00";
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
 /*!40101 SET NAMES utf8mb4 */;
-DROP TABLE IF EXISTS `Books`;
+
 
 CREATE TABLE `books` (
   `book_id` int(11) NOT NULL,
@@ -34,9 +33,10 @@ INSERT INTO `books` (`book_id`, `title`, `author_table_id`, `genre`, `summary`, 
 (13, 'Second Class Citizen', 8, 'Historical Fiction, Novel', 'The story revolves around the life of Adah, a young Nigerian woman who faces various challenges and obstacles as she strives to overcome societal limitations and achieve her dreams. Adah\'s journey takes her from her native Nigeria to London, where she confronts issues of gender inequality, cultural clashes, and the struggle for independence. The novel delves into themes of identity, feminism, and the resilience of the human spirit in the face of adversity.', 'scc.jpg', '1979'),
 (14, 'No Longer at Ease', 1, 'Historical Fiction, Novel', 'This is a sequel to Things Fall Apart.The novel portrays the life of Obi Okonkwo, a young Nigerian man who returns from studying in England to work in the colonial civil service. Achebe explores the conflicts and dilemmas faced by Obi as he grapples with corruption, cultural clashes, and personal choices in the changing landscape of post-colonial Nigeria', 'nlae.jpg', '1960'),
 (15, 'And After Many Days', 9, 'Historical Fiction, Novel', 'The novel revolves around the Utu family and their search for their missing teenage son, Paul. Ile skillfully captures the political and environmental tensions in the region while delving into the complexities of family, identity, and the impact of societal changes on individuals and communities', 'aamd.jpg', '2014'),
-(16, 'Weep Not, Child', 6, 'Historical Fiction, Novel', 'Weep Not, Child is Ngũgĩ wa Thiong\'o\'s debut novel and one of the earliest major works of East African literature. Set during the period of British colonial rule in Kenya, the story follows Njoroge, a young boy from a Kikuyu family, as he navigates the challenges of poverty, education, and political upheaval. Through Njoroge\'s journey, the novel explores themes of resistance, identity, and the impact of colonization on African communities.', 'placeholder_books.jpg', '1964'),
+(16, 'Weep Not, Child', 6, 'Historical Fiction, Novel', 'Weep Not, Child is Ngũgĩ wa Thiong\'o\'s debut novel and one of the earliest major works of East African literature. Set during the period of British colonial rule in Kenya, the story follows Njoroge, a young boy from a Kikuyu family, as he navigates the challenges of poverty, education, and political upheaval. Through Njoroge\'s journey, the novel explores themes of resistance, identity, and the impact of colonization on African communities.', 'wnc.jpg', '1964'),
 (17, 'The River Between', 6, 'Historical Fiction, Novel', 'This is a novel by Ngũgĩ wa Thiong\'o set in colonial Kenya. The story revolves around the conflict between two neighboring communities, the Gikuyu and the Christianized Kameno. Waiyaki, a young leader from the Gikuyu community, becomes caught in the midst of this clash as he tries to bridge the divide and find a balance between tradition and modernity. The novel explores themes of cultural conflict, the impact of Christianity, and the struggle for identity.', 'trb.jpg', '1965'),
-(18, 'Black Hermit', 6, 'Historical Fiction, Novel', 'Black Hermit is a play written by Ngũgĩ wa Thiong\'o. It tells the story of a young man named Remi, who returns to his village after studying abroad. Kĩoi\'s arrival disrupts the social order, and his unconventional behavior challenges traditional norms and exposes the hypocrisy of the society he encounters. Black Hermit delves into themes of cultural clash, colonialism, and the search for personal freedom and authenticity.', 'bh.jpg', '1968');
+(18, 'Black Hermit', 6, 'Historical Fiction, Novel', 'Black Hermit is a play written by Ngũgĩ wa Thiong\'o. It tells the story of a young man named Remi, who returns to his village after studying abroad. Kĩoi\'s arrival disrupts the social order, and his unconventional behavior challenges traditional norms and exposes the hypocrisy of the society he encounters. Black Hermit delves into themes of cultural clash, colonialism, and the search for personal freedom and authenticity.', 'bh.jpg', '1968'),
+(19, 'The Potter\'s Wheel', 11, 'historical fiction, novel', 'Obuechina, the only brother of six older sisters, prize pupil in the village school, apple of his doting mother\'s eye, eight years old and hopelessly spoilt. In a vain attempt to salvage his character, his father decides he must be sent away as a servant to a schoolmaster with a dragon of a wife. Obu goes - and comes back very different.', 'tpw.jpg', '1973');
 
 
 ALTER TABLE `books`
@@ -45,12 +45,11 @@ ALTER TABLE `books`
 
 
 ALTER TABLE `books`
-  MODIFY `book_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `book_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 
 ALTER TABLE `books`
   ADD CONSTRAINT `books_ibfk_1` FOREIGN KEY (`author_table_id`) REFERENCES `authors` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
-COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

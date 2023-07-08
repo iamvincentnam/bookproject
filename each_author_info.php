@@ -1,20 +1,18 @@
 
 <?php include_once 'inc/header.php'; ?>
 <?php 
+//To Grab the ID from the URL  so that we can query with it
 $author_data_id = $_GET['id'];
+// mysql query statement
+$query= "SELECT * from authors INNER JOIN  books  ON authors.id = books.author_table_id where authors.id=$author_data_id;";
+//since the db.php is included in this file, we can call its function putting in the respective arguments
+$each_author_data=fetch_Data_from_Database($query,'fetch');
 
-$sql="SELECT * from authors INNER JOIN  books  ON authors.id = books.author_table_id where authors.id=$author_data_id;";
-
-$one_author_row = mysqli_query($connection, $sql);
-//To Get access to A row of data with the specific ID  associated with one author
-if ($one_author_row) {
-  $each_author_data = mysqli_fetch_assoc($one_author_row);
-} 
-?>
-<?php
 //To fetch all the books that is associated with one author
-$other_books_by_an_author = mysqli_fetch_all($one_author_row, MYSQLI_ASSOC);
 
+ $query2= "SELECT * from authors INNER JOIN  books  ON authors.id = books.author_table_id where authors.id=$author_data_id;";
+ $other_books_by_an_author = fetch_Data_from_Database($query2,'fetchAll');
+// $other_books_by_an_author = fetch_Data_from_Database($query,'fetchAll');
 ?>
 
 
@@ -76,7 +74,7 @@ $other_books_by_an_author = mysqli_fetch_all($one_author_row, MYSQLI_ASSOC);
        
         <div class="row mb-4 g-4">
           
-        <?php foreach($other_books_by_an_author as $book) : ?>
+        <?php foreach($other_books_by_an_author as $book): ?>
           <div class="col-lg-4 col-6">
             <div class="card custom-card-height">
               <img src="imgs/<?= $book['book_img']; ?>" alt="No longer at ease image" class="card-img-top m-0">
@@ -86,47 +84,20 @@ $other_books_by_an_author = mysqli_fetch_all($one_author_row, MYSQLI_ASSOC);
                 <p class="text-muted fw-bold m-0">Released year</p>
                 <p><?= $book['released_year']; ?></p>
                 </div>
-                <a href="index.php" class="btn px-1 text-white bg-danger shadow float-end mb-2 "> Read More</a>
+                <a href="each_book_info.php?book_id=<?=$book['book_id'] ?>"class="btn px-1 text-white bg-danger shadow float-end mb-2"> Read More</a>
               </div>
             </div>
           </div>
           <?php endforeach ; ?>
         </div>
-
-          <!-- <div class="col-lg-4 col-6">
-            <div class="card custom-card-height">
-              <img src="imgs/scc.jpg" alt="No longer at ease image" class="card-img-top m-0">
-              <div class="card-body my-0 py-2">
-                <h5 class="card-title text-danger "> Second Class Citizen</h5>
-                <div class="card-text m-0">
-                <p class="text-muted fw-bold m-0">Released Year</p>
-                <p>1958</p>
-                </div>
-                <a href="index.php" class="btn px-1 text-white bg-danger shadow float-end mb-2 "> Read More</a>
-              </div>
-            </div>
-          </div>
-
-
-          <div class="col-lg-4 col-6">
-            <div class="card custom-card-height">
-              <img src="imgs/scc.jpg" alt="No longer at ease image" class="card-img-top m-0">
-              <div class="card-body my-0 py-2">
-                <h5 class="card-title text-danger "> Second Class Citizen</h5>
-                <div class="card-text m-0">
-                <p class="text-muted fw-bold m-0">Released Year</p>
-                <p>1958</p>
-                </div>
-                <a href="index.php" class="btn px-1 text-white bg-danger shadow float-end mb-2 "> Read More</a>
-              </div>
-            </div>
-          </div> -->
        
       </section>
 
       <?php include_once 'inc/footer.php'; ?>
 
-
+<script>
+  
+</script>
 
 
 
