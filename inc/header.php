@@ -83,7 +83,7 @@ section .logo{transition:.4s; cursor: pointer;}
     .delete-icon span{cursor: pointer; }
     .delete-icon span a{text-decoration: none; color: lightslategray;}
     .delete-icon span:hover{scale: 1.1;}
-
+.container-fluid .row{margin-bottom: 5rem;}
 
     table{min-height:auto; }
     /* table tr:nth-of-type(n+2):hover{scale: 1.01;} */
@@ -128,13 +128,13 @@ section .logo{transition:.4s; cursor: pointer;}
     </title>
 </head>
 <body>
-    <section class="section col-lg-10  col-sm-12  mx-auto  m-0 p-0 shadow bg-light">
+    <section class="section col-lg-12  col-sm-12  mx-auto  m-0 p-0 shadow bg-light">
 
-        <div class="container ">
-        <div class="row ">
+        <div class="container-fluid">
+        <div class="row">
         
-       <div class="col-md-12 nav d-flex justify-content-between align-items-center px-3 bg-dark shadow-lg" >
-        <div class="logo col-6 ">
+       <div class="col-md-12 nav d-flex justify-content-between align-items-center px-3 bg-dark shadow-lg fixed-top mb-5">
+        <div class="logo col-6">
             <a href="http://localhost/bookProject/index.php" class="lead text-white fw-bold m-0 p-0 nav_logo">Book<i class="bi bi-book text-danger"></i></i></a>
         </div>
         <div id="links" class="col-lg-6 flex-wrap">

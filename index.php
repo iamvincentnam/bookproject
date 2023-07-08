@@ -1,27 +1,6 @@
 <?php  include 'inc/header.php'; ?>
 <?php 
-// $nobooks_table='';
-//  $tableName = 'books';
 
-
- //Check if the table Exists
-// $tableExistsQuery ="SHOW TABLES LIKE 'books';";
-// $tableExistsResults = mysqli_query($connection, $tableExistsQuery);
-
-// if(mysqli_num_rows($tableExistsResults) == 0){
-//   $nobooks_table='<p class="lead text-danger p-2 text-center fw-bold"> THERE IS NO TABLE AVAILABLE
-//   </p>';
-// }
-// else{
-//   $sql = "SELECT *
-//   FROM authors
-//   INNER JOIN books ON authors.id = books.author_table_id
-//   ORDER BY books.book_id;";
-//   $result = mysqli_query($connection,$sql);
-//   $books= mysqli_fetch_all($result, MYSQLI_ASSOC);
-// }
-
-// $books='';
 $query = "SELECT *
           FROM authors
           INNER JOIN books ON authors.id = books.author_table_id
@@ -29,8 +8,8 @@ $query = "SELECT *
 $books = fetch_Data_from_Database($query, 'fetchAll');
 
 ?>
-<div class="row col-12 mt-5 mb-0">
-  <h1 class=" text-center text-light-50"> BOOK CATALOGUE</h1>
+<div class="row col-12 bg-primary p-0 m-0">
+  <h1 class=" text-center text-light-50 mt-5 "> BOOK CATALOGUE</h1>
 </div>
 
   <div class="row col-12 mx-auto my-5 ">
