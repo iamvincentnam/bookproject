@@ -16,11 +16,7 @@ $each_author_data=fetch_Data_from_Database($query,'fetch');
 ?>
 
 
-<div class="largeThumbnail">
-   <img src="imgs/ngugiwathiongo1.jpg" 
-        alt="Big_image">
- <span id="closeIcon"> <img src="imgs/close_icon.png" alt="closeICon"> </span>
-    </div>
+
     <section id="author" class="author-section-padding bg-white m-0 py-2">
 
     
@@ -61,21 +57,20 @@ $each_author_data=fetch_Data_from_Database($query,'fetch');
             </div>
         </div>
   <hr>
-        <div class="row col-4 mt-5 mx-auto">
-          <div class="col-lg-12">
-            <p class="lead fs-1 text-center text-white badge bg-secondary pill py-2">
-            OTHER  WORKS
+        <div class="row col-lg-12 m-0 p-0 my-4 bg-light">
+          <div class="">
+            <p class="lead fs-4 fw-bold text-dark text-center">
+           You might also enjoy
             </p>
           </div>
         </div>
-      <hr>
-
+    
         <!--Here Is a HTML Markup which is supposed to display an Image card of other Books by the particular author  -->
        
-        <div class="row mb-4 g-4">
+        <div class="row mb-4 g-0">
           
         <?php foreach($other_books_by_an_author as $book): ?>
-          <div class="col-lg-4 col-6">
+          <div class="col-lg-3 col-6">
             <div class="card custom-card-height">
               <img src="imgs/<?= $book['book_img']; ?>" alt="No longer at ease image" class="card-img-top m-0">
               <div class="card-body my-0 py-2">
