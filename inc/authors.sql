@@ -1,12 +1,31 @@
+-- phpMyAdmin SQL Dump
+-- version 5.2.0
+-- https://www.phpmyadmin.net/
+--
+-- Host: 127.0.0.1
+-- Generation Time: Jul 17, 2023 at 03:10 PM
+-- Server version: 10.4.27-MariaDB
+-- PHP Version: 8.2.0
+
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
 SET time_zone = "+00:00";
+
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
 /*!40101 SET NAMES utf8mb4 */;
 
+--
+-- Database: `daniel_krossing`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `authors`
+--
 
 CREATE TABLE `authors` (
   `id` int(11) NOT NULL,
@@ -16,6 +35,10 @@ CREATE TABLE `authors` (
   `author_img` varchar(255) NOT NULL DEFAULT 'placeholder.jpg',
   `biography` longtext DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `authors`
+--
 
 INSERT INTO `authors` (`id`, `author_name`, `nationality`, `born_in`, `author_img`, `biography`) VALUES
 (1, 'Prof. Chinua Achebe', 'Nigerian', 'November 16, 1930', 'Chinuaachebe.jpg', 'Achebe grew up in the Igbo (Ibo) town of Ogidi, Nigeria. After studying English and literature at University College (now the University of Ibadan), Achebe taught for a short time before joining the staff of the Nigerian Broadcasting Corporation in Lagos, where he served as director of external broadcasting in 1961–66. In 1967 he cofounded a publishing company at Enugu with the poet Christopher Okigbo, who died shortly thereafter in the Nigerian civil war for Biafran independence, which Achebe openly supported.'),
@@ -30,15 +53,30 @@ INSERT INTO `authors` (`id`, `author_name`, `nationality`, `born_in`, `author_im
 (10, 'Steve Biko', 'South African', '1946 King William\'s Town, South Africa', 'stevebiko.jpg', 'Steve Biko, a South African anti-apartheid activist and writer, played a significant role in the Black Consciousness Movement. He advocated for the empowerment and self-awareness of Black people in South Africa. Biko\'s writings, such as I Write What I Like, continue to inspire and provoke discussions on racism, identity, and social justice.'),
 (11, 'Ike Chukwuemeka Vincent', 'Nigeria', '1931', 'chukwuemekavincent.jpg', 'Chukwuemeka Vincent, a Nigerian author, gained recognition for his novel The Potter\'s Wheel. His work delves into themes of personal growth, redemption, and the power of self-discovery. Vincent\'s writing style combines elements of spirituality, philosophy, and introspection, offering readers a thought-provoking and reflective journey.\r\n'),
 (12, 'Elechi Amadi', 'Nigeria', '1934: Aluu, Rivers state', 'Elechiamadi.jpg', 'Elechi Amadi, a Nigerian author and former soldier, is renowned for his novel The Concubine. He depicted the traditional life and customs of the Niger Delta region while exploring themes of love, jealousy, and destiny. Amadi\'s works continue to resonate with readers for their rich cultural insights and compelling storytelling.'),
-(13, 'Chimamnda Ngozi Adichie', 'Nigeria', '1977,Enugu', 'adichie.jpg', 'Chimamanda Ngozi Adichie, a Nigerian author and feminist, is known for her powerful storytelling and advocacy for gender equality. Her novel Half of a Yellow Sun explores the Biafran War and its impact on individuals. Adichie\'s TED Talk on feminism, We Should All Be Feminists, further propelled her to international recognition and sparked both admiration and controversy..');
+(13, 'Chimamnda Ngozi Adichie', 'Nigeria', '1977,Enugu', 'adichie.jpg', 'Chimamanda Ngozi Adichie, a Nigerian author and feminist, is known for her powerful storytelling and advocacy for gender equality. Her novel Half of a Yellow Sun explores the Biafran War and its impact on individuals. Adichie\'s TED Talk on feminism, We Should All Be Feminists, further propelled her to international recognition and sparked both admiration and controversy..'),
+(14, 'Brian Tracy', 'Canada', 'Prince Edward Island,1944', 'briantracy.jpg', 'Brian Tracy is a Canadian-American motivational speaker, self-help author, and personal development expert. He is known for his expertise in leadership, goal-setting, time management, and success psychology. Tracy has delivered seminars and workshops in over 80 countries and has written numerous books on personal and professional development.'),
+(15, 'Napoleon Hill', 'United States', 'Virginia,1883', 'napoleonhill.jpg', 'He is best known for his book Think and Grow Rich, which has sold millions of copies worldwide and is considered one of the most influential personal development books of all time. Hill\'s work focused on success principles, positive thinking, and the power of the mind. Napoleon Hill was an American author and self-help pioneer.'),
+(16, 'Robert Kiyosaki', 'United States', 'Hawaii,1947', 'robertkiyosaki.jpg', 'Robert Kiyosaki is an American entrepreneur, investor, and author. He is best known for his book \'Rich Dad Poor Dad,\' which challenges conventional financial wisdom and advocates for financial literacy and investing in assets that generate passive income. Kiyosaki promotes the idea of financial education and building wealth through real estate and business ownership. ');
 
+--
+-- Indexes for dumped tables
+--
 
+--
+-- Indexes for table `authors`
+--
 ALTER TABLE `authors`
   ADD PRIMARY KEY (`id`);
 
+--
+-- AUTO_INCREMENT for dumped tables
+--
 
+--
+-- AUTO_INCREMENT for table `authors`
+--
 ALTER TABLE `authors`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

@@ -24,7 +24,7 @@ $each_author_data=fetch_Data_from_Database($query,'fetch');
             <div class="row mb-4">
             <div class="col-lg-3 col-sm-12 col-12 d-flex align-items-center bg-secondary">
               <div class="about-img book_title_img text-center border">
-                <img src="imgs/<?=$each_author_data['author_img'];?>" alt="" class="img-fluid ">
+                <img src="imgs/uploaded_images/<?=$each_author_data['author_img'];?>" alt="" class="img-fluid ">
               </div>
             </div>
             <div class="col-lg-9 col-md-12 col-12 ps-lg-3 mt-md-5">
@@ -72,7 +72,7 @@ $each_author_data=fetch_Data_from_Database($query,'fetch');
         <?php foreach($other_books_by_an_author as $book): ?>
           <div class="col-lg-3 col-6">
             <div class="card custom-card-height">
-              <img src="imgs/<?= $book['book_img']; ?>" alt="No longer at ease image" class="card-img-top m-0">
+              <img src="imgs/uploaded_images/<?= $book['book_img']; ?>" alt="No longer at ease image" class="card-img-top m-0">
               <div class="card-body my-0 py-2">
                 <h5 class="card-title text-danger "><?= $book['title']; ?></h5>
                 <div class="card-text m-0">

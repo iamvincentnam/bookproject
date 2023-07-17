@@ -1,6 +1,6 @@
 <?php include 'inc/header.php'; ?>
 <?php 
-
+ 
 $query = "SELECT *
           FROM authors
           INNER JOIN books ON authors.id = books.author_table_id
@@ -9,18 +9,18 @@ $books = fetch_Data_from_Database($query, 'fetchAll');
 
 $carousel_img_query = "SELECT * 
                        FROM books 
-                       WHERE book_img IN ('ttayn.jpg', 'ph.jpg', 'scc.jpg', 'tpw.jpg', 'tc.jpg', 'aamd.jpg') 
+                       WHERE book_img IN ('ttayn.jpg', 'ph.jpg', 'scc.jpg', 'tpw.jpg', 'tc.jpg', 'aamd.jpg','richdad_poor_dad.jpg','successisajourney.jpg','nlae.jpg') 
                        ORDER BY book_id";
 $carousel_img_data = fetch_Data_from_Database($carousel_img_query, 'fetchAll');
 
 ?>
 
-<div class="row col-lg-8 p-0 m-0 book_catalogue mx-auto">
+<div class="row col-lg-8 p-0 m-0 book_catalogue mx-auto null_display">
   <div id="carouselExampleAutoplaying" class="carousel slide col-lg-4 mx-auto" data-bs-ride="carousel">
     <div class="carousel-inner">
       <?php foreach($carousel_img_data as $index => $each_image): ?>
         <div class="carousel-item <?php echo ($index === 0) ? 'active' : ''; ?>">
-          <img src="imgs/<?php echo $each_image['book_img']; ?>" class="d-block m-0 p-0 img-fluid" alt="first_book_image">
+          <img src="imgs/uploaded_images/<?php echo $each_image['book_img']; ?>" class="d-block m-0 p-0 img-fluid" alt="first_book_image">
         </div>
       <?php endforeach; ?>
     </div>
@@ -35,7 +35,7 @@ $carousel_img_data = fetch_Data_from_Database($carousel_img_query, 'fetchAll');
   </div>
 </div>
 
-<div class="row col-12 mx-auto mt-4 mb-0">
+<div class="row col-12 mx-auto mt-4 mb-0 null_display">
   <?php if(empty($books)): ?>
     <p class="lead text-primary p-2 text-center fw-bold">
       THERE IS NO Book AVAILABLE
