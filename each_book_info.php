@@ -13,12 +13,12 @@ $one_book_data =fetch_Data_from_Database($query,'fetch');
   
         <div class="row">
         <div class="col-lg-3 col-sm-12 col-12 d-flex align-items-center justify-content-center">
-          <div class="about-img book_title_img text-center shadow">
-            <img src="imgs/<?php echo $one_book_data['book_img'];?>" alt="" class="img-fluid">
+          <div class="about-img book_title_img text-center shadow border">
+            <img src="imgs/uploaded_images/<?php echo $one_book_data['book_img'];?>" alt="" class="img-fluid">
           </div>
         </div>
-        <div class="col-lg-9 col-md-12 col-12 ps-lg-5 mt-md-5">
-          <div class="about-text">
+        <div class="col-lg-9 col-md-12 col-12 ps-lg-0 mt-md-5 shadow">
+          <div class="about-text ps-lg-5">
             <p class="display-6 my-0 each_book_title">
               <?= $one_book_data['title'];?>
             </p>
@@ -35,15 +35,15 @@ $one_book_data =fetch_Data_from_Database($query,'fetch');
               </div>
             </div>
             <hr>
-            <div class="about_author bg-gradient-primary">
+            <div class="about_author bg-light">
                 <h4 class="text-secondary py-2">About The Book</h4>
-                <div class="img_thumbnail col-12 d-inline-block pe-2 my-2">
-                <img src="imgs/<?php echo  $one_book_data['author_img']?>" alt="" class="img-fluid m-0 p-0">
+                <div class="img_thumbnail col-12 d-inline pe-2 my-2 ">
+                <img src="imgs/uploaded_images/<?php echo  $one_book_data['author_img']?>" alt="" class="img-fluid m-0 p-0 rounded">
                 </div>
-                <h6 class="d-inline-block each_book_data_author_name" onclick="window.location.href='each_author_info.php?id=<?= $one_book_data['id']?>'"><?= $one_book_data['author_name'] ;?></h6>
+                <h6 class="d-inline each_book_data_author_name" onclick="window.location.href='each_author_info.php?id=<?= $one_book_data['id']?>'"><?= $one_book_data['author_name'];?></h6>
                 
             </div>
-            <p class="text-black- mt-4 mb-sm-4"><?php echo  $one_book_data['summary'] ;?></p>
+            <p class="text-black- mt-4 mb-sm-4 "><?php echo  $one_book_data['summary'] ;?></p>
 
             <a href="index.php" class="btn px-2 text-light bg-secondary mb-4 shadow-lg go_back_to_home"> Go Back To Home</a>
           </div>

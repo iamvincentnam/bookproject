@@ -5,7 +5,11 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   
+
+
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
     <style>
@@ -18,6 +22,7 @@ body {
 }
 
 /* Navigation */
+nav{min-height: 60px !important;}
 nav .logo:hover {
   transform: translate(.5rem) !important;
 }
@@ -182,14 +187,20 @@ table tr:nth-of-type(even) {
   text-decoration: underline;
   font-weight: bold;
 }
+.img_thumbnail {background-color: #6c757d !important; }
+.img_thumbnail img{border-radius: 50% !important; height: 300px !important; width: 300px !important; }
+#Book_form_Logo_div{background-color:purple !important; height:150px !important; width: 150px !important; border-radius: 50%; }
+.form_input_logo{ width:100% !important; border-radius: 50%; height:150px !important; width: 150px !important; }
+.section-form{margin-top: 5rem !important
+  ;background-color: #d2c361e2 !important; }
 
+  .add_book_active{background-color: white!important; padding:4px  18px !important; color: #6c757d !important; border-radius: 5px !important;}
     </style>
   <link rel="icon" href="imgs/icons8-book-96.png" type="image/icon type">
     <title>MyBook CATALOGUE
     </title>
 </head>
 <body>
-
 
 
 <nav class="navbar fixed-top  navbar-expand-md navbar-dark bg-dark">
@@ -214,12 +225,10 @@ table tr:nth-of-type(even) {
         </li>
 
 
-        <li class="nav-item m-0 p-0  me-0">
-          <a href="#" class="nav-link d-none d-md-inline <?= $_SERVER["REQUEST_URI"] == "/bookProject/add_to_book.php" ? "bg-light text-secondary py-1 px-2 rounded" : ''; ?>"><i class="bi bi-person-fill-add"></i> <i class="bi bi-book-half"></i></a>
-        </li>
        
-        <li class="nav-item m-0 p-0  me-5">
-          <a href="#" class="nav-link  d-md-none <?= $_SERVER["REQUEST_URI"] == "/bookProject/add_to_book.php" ? "bg-light text-secondary py-1 px-2 rounded" : ''; ?>">ADD</a>
+        <li class="nav-item m-0 p-0  me-5 " style="cursor: pointer;">
+          <span class="nav-link click_to_add_book_to_database">ADD</span>
+         
         </li>
        
       
@@ -227,25 +236,204 @@ table tr:nth-of-type(even) {
     </div>
   </div>
 </nav>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+
+
+
 <script>
-    const nav = document.querySelector('nav');
-    window.addEventListener('scroll',()=>{
-        if(window.pageYOffset >100){
-            // alert("window.pageYOffset >100")
-            // nav.classList.remove('bg-dark' )
-            nav.classList.add('bg-opacity-75')
-        }else{
-            // nav.classList.add('bg-dark')
-            nav.classList.remove('bg-opacity-75')
-        }
-    }); 
+   
+    
+    // add_book_to_database_link.addEventListener('click',()=>{
+      
+    // });
 </script>
+
+<!-- The database script to insert data into the database begins here -->
+
+<?php
+// initialize an empty varible to be used to store the $_GET values 
+$title_of_book  =$summary = $released_year =  $book_selection = $fileName ='';
+
+//initialize empty error variables to be used later
+$title_error =   $summary_error = $released_year_error =  $book_selection_error =$fileupload_error= $fileupload_error2='';
+//form Submit 
+if(isset($_POST['submit'])){
+  //validate TITLE of Book
+  if(empty($_POST['title_of_book'])){
+    $title_error = "Book Title Required";
+  }else{
+    $title_of_book =filter_input(INPUT_POST,'title_of_book',FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+  }
+
+  //validate  released Year
+  if(empty($_POST['released_year'])){
+    $released_year_error ="Released Year Required";
+  }else{
+    $released_year =filter_input(INPUT_POST,'released_year',FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+  }
+  //validate Selection 
+  if(empty($_POST['book_selection'])){
+    $book_selection_error ="Select an author Name";
+  }else{
+    $book_selection = $_POST['book_selection'];
+  }
+
+  // validate summary 
+  if(empty($_POST['summary'])){
+    $summary_error ="summary is Year Required";
+  }else{
+    $summary =filter_input(INPUT_POST,'summary',FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+  }
+// validate file upload
+if (empty($_FILES['fileupload']['name'])) {
+  $fileupload_error = "Please select a file to upload";
+} else {
+  $allowed_extension =array('png','jpg','jpeg','gif');
+  $fileName = $_FILES['fileupload']['name'];
+$file_temp = $_FILES['fileupload']['tmp_name'];
+
+$file_ext_array = explode('.',$fileName);
+$file_ext = strtolower(array_pop($file_ext_array));
+$target_directory = "imgs/uploaded_images/{$fileName}";
+if(in_array($file_ext, $allowed_extension) && getimagesize($file_temp)) {
+  move_uploaded_file($file_temp, $target_directory);
+  $fileupload_error ='';
+
+} else{
+  $fileupload_error = "Invalid file format. Please upload an image file (jpg, jpeg, gif, png)";
+}
+
+ 
+  
+}
+
+
+if(empty($title_error) && empty($book_selection_error) && empty($summary_error) && empty ($released_year_error) && empty($fileupload_error )){
+  $sql_book_insertion_query = "INSERT INTO BOOKS (
+    title,
+    author_table_id,
+    Summary,
+    book_img,
+     released_year
+     )values(
+   '$title_of_book',
+   '$book_selection', 
+   '$summary',
+   '$fileName',
+   '$released_year'
+   );";
+    $statement = $pdo->prepare($sql_book_insertion_query);
+
+
+if($statement->execute()){
+  // echo '<script>window.location.href = "index.php";</script>';
+  exit();
+}else{echo "Error Inserting data into the database.";  }
+}
+
+}
+
+?>
+
+
+<section class="section col-lg-6  col-sm-12  mx-auto px-4 py-1 shadow bg-success 
+d-none
+ section-form">
+  <div class="container-fluid">
+<div class="row m-0 ">
+            <div class="col-lg-12 mx-auto text-center my-3" id="Book_form_Logo_div">
+                <img src="http://localhost/bookProject/imgs/book_app_logo.png" alt="Book form Logo"  class=" form_input_logo img-fluid m-0">
+            </div>
+    </div>
+       <div class="row">
+            <p class="lead text-center fw-bold text-body-tertiary my-3 fs-4">Enter A New Book</p>
+
+
+<!-- FORM  MARK UP BEGINS HERE-->
+        <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" Class="col-md-12 mx-auto" method="POST" enctype="multipart/form-data">
+      <!--  title and input goes here -->
+      <div class="row mb-4">
+      <div class=" col">
+        <label for="titel_of_book" class="form-label  text-dark fs-6">Book Title<sup class='text-danger'>*</sup></label>
+        <input type="text" class="form-control <?php echo $title_error ? 'is-invalid' : null; ?>" id="title_of_book" name="title_of_book" placeholder="Book Title" autocomplete="off" required>
+      <span class="invalid_span text-danger"> 
+        <?php echo $title_error; ?>
+      </span>
+      </div>
+
+
+      <div class="col">
+      <label for="authors" class="form-label  text-dark fs-6">Choose  An Author </label>
+      <select class="form-select <?php echo $book_selection_error ? 'is-invalid' : null; ?>" aria-label="Default select example" name="book_selection" required>
+  <option selected></option>
+  <option value="1">Chinua Achebe</option>
+  <option value="2">Ben Okri</option>
+  <option value="3">Yaa Gyasi</option>
+  <option value="4">Mariama Ba</option>
+  <option value="5">Lola Shoneyin</option>
+  <option value="6">Ngugi wa Thiong'o</option>
+  <option value="7">Alan Paton</option>
+  <option value="8">Buchi Emecheta</option>
+  <option value="9">Jowhor Ile</option>
+  <option value="10">Steve Biko</option>
+  <option value="11">Ike Vincent</option>
+  <option value="12">Elechi Amadi</option>
+  <option value="13">Chimamanda Ngozi Adichie</option>
+  <option value="14">Brian Tracy</option>
+  <option value="15">Napoleon Hill</option>
+  <option value="16">Robert Kiyosaki</option>
+</select>
+<span class="invalid_span text-danger"> 
+        <?php echo $book_selection_error; ?>
+      </span>
+      </div>
+      </div>
+
+      <!-- div for summary  is here  -->
+      <div class="mb-3 col-lg-12">
+        <label for="summary" class="form-label  text-dark fs-6">Brief Summary<sup class='text-danger'>*</sup></label>
+        <textarea name="summary" id="summary" rows="5" class="form-control px-4 <?php echo $summary_error ? 'is-invalid' : null; ?>" placeholder="SUMMARY" required></textarea>
+        <span class="invalid_span text-danger"> 
+        <?php echo $summary_error; ?>
+      </span>
+      </div>
+
+      <!-- div forReleased Year and input goes here -->
+
+      <div class="row mb-5">
+         <!-- div for Images and input goes here -->
+      <div class="col ">
+      <label for="fileupload" class="form-label  text-dark fs-6">Please Select an Image</label>
+        <input type="file" name="fileupload" class="form-control <?php echo $fileupload_error ? 'is-invalid' : null; ?>" required>
+        <span class="invalid_span text-danger"> 
+        <?php echo $fileupload_error ; ?>
+      </span>
+      </div>
+
+      <div class="col">
+        <label for="Released Year" class="form-label  text-dark fs-6"> Released Year</label>
+        <input type="number" min="1000" max="9999" class="form-control <?php echo $released_year_error ? 'is-invalid' : null; ?>" id="released_year" name="released_year" placeholder="Enter Year Here" autocomplete="off" required>
+        <span class="invalid_span text-danger"> 
+        <?php echo $released_year_error; ?>
+      </span>
+      </div>
+
+     
+      </div>
+      <div class="m-0 col-lg-4 mx-auto">
+        <input type="submit" name="submit" class="form-control btn btn-dark fw-bold shadow" value="SEND">
+      </div>
+      </form>
+      </div>
+      </div>
+  </section>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+  <script src="http://localhost/bookProject/inc/script.js"></script>
+
 
     <section class="section col-lg-12  col-sm-12  mx-auto  m-0 p-0 shadow bg-light mt-5">
 
         <div class="container-fluid">
-       <!-- the former nav sits here-->
-      
-
     
+       <!-- the former nav sits here-->
+       
