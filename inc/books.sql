@@ -1,45 +1,15 @@
--- phpMyAdmin SQL Dump
--- version 5.2.0
--- https://www.phpmyadmin.net/
---
--- Host: 127.0.0.1
--- Generation Time: Jul 17, 2023 at 03:10 PM
--- Server version: 10.4.27-MariaDB
--- PHP Version: 8.2.0
 
-SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-START TRANSACTION;
-SET time_zone = "+00:00";
-
-
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8mb4 */;
-
---
--- Database: `daniel_krossing`
---
-
--- --------------------------------------------------------
-
---
--- Table structure for table `books`
---
+DROP TABLE IF EXISTS `books`;
 
 CREATE TABLE `books` (
-  `book_id` int(11) NOT NULL,
+  `book_id` int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
   `title` varchar(255) NOT NULL,
   `author_table_id` int(11) NOT NULL,
   `genre` varchar(255) DEFAULT 'historical fiction, novel',
   `summary` longtext NOT NULL,
   `book_img` varchar(255) NOT NULL DEFAULT 'placeholder_books.jpg',
   `released_year` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `books`
---
+);
 
 INSERT INTO `books` (`book_id`, `title`, `author_table_id`, `genre`, `summary`, `book_img`, `released_year`) VALUES
 (1, 'Things Fall Apart', 1, 'Historical Fiction, Novel', 'Set in Nigeria during the late 19th century, \'Things Fall Apart\' portrays the life of Okonkwo, a respected warrior of the Igbo community. The novel delves into the clash between traditional African values and the encroaching influence of colonialism. Through Okonkwo\'s personal struggles and the disintegration of his society, Achebe masterfully explores themes of cultural identity, power, and the tragic consequences of change.', 'tfa.jpg', 1958),
@@ -61,9 +31,10 @@ INSERT INTO `books` (`book_id`, `title`, `author_table_id`, `genre`, `summary`, 
 (17, 'The River Between', 6, 'Historical Fiction, Novel', 'This is a novel by Ngũgĩ wa Thiong\'o set in colonial Kenya. The story revolves around the conflict between two neighboring communities, the Gikuyu and the Christianized Kameno. Waiyaki, a young leader from the Gikuyu community, becomes caught in the midst of this clash as he tries to bridge the divide and find a balance between tradition and modernity. The novel explores themes of cultural conflict, the impact of Christianity, and the struggle for identity.', 'trb.jpg', 1965),
 (18, 'Black Hermit', 6, 'Historical Fiction, Novel', 'Black Hermit is a play written by Ngũgĩ wa Thiong\'o. It tells the story of a young man named Remi, who returns to his village after studying abroad. Kĩoi\'s arrival disrupts the social order, and his unconventional behavior challenges traditional norms and exposes the hypocrisy of the society he encounters. Black Hermit delves into themes of cultural clash, colonialism, and the search for personal freedom and authenticity.', 'bh.jpg', 1968),
 (19, 'The Potter\'s Wheel', 11, 'historical fiction, novel', 'Obuechina, the only brother of six older sisters, prize pupil in the village school, apple of his doting mother\'s eye, eight years old and hopelessly spoilt. In a vain attempt to salvage his character, his father decides he must be sent away as a servant to a schoolmaster with a dragon of a wife. Obu goes - and comes back very different.', 'tpw.jpg', 1973),
-(56, 'Success Is A Journey', 14, 'historical fiction, novel', 'It began when then 21-year-old Brian Tracy awoke one day with a  dream--an unrealistic or impossible illusion for most people of his age who confine themselves to pursuing more practical goals --to travel the world with his friends and see things no one else ahd seen, and it ended in an unexpected and dangerous confrontation with reality and a struggle for life in the middle of Africa&#039;s Sahara Desert. He would recount to his friends and family what he learned that year about the meaning of life and love, the value of hard work, and what&#039;s really important when everything else has been stripped away.', 'successisajourney.jpg', 1998),
-(61, 'Rich Dad Poor Dad', 16, 'historical fiction, novel', 'The book explodes the myth that you need to earn a high income to be rich and explains the difference between working for money and having your money work for you.\r\nI bought this book on the recommendation of a client, and from page one I was feeling uncomfortable with it. I pushed aside the part of my mind that was shouting &quot;This guy is trashing highly educated people and the working poor!&quot; and I was able to actually become enthusiastic about the message of the book.', 'richdad_poor_dad.jpg', 1997),
-(62, 'Think And Grow Rich', 15, 'historical fiction, novel', 'Timeless information, great words of wisdom, and excellent advice from, perhaps, the greatest personal development book ever published. The principles can be used for anything that you desire. I bought this bestseller from:', 'think_and_grow_rich.jpg', 1937);
+(20, 'Success Is A Journey', 14, 'historical fiction, novel', 'It began when then 21-year-old Brian Tracy awoke one day with a  dream--an unrealistic or impossible illusion for most people of his age who confine themselves to pursuing more practical goals --to travel the world with his friends and see things no one else ahd seen, and it ended in an unexpected and dangerous confrontation with reality and a struggle for life in the middle of Africa&#039;s Sahara Desert. He would recount to his friends and family what he learned that year about the meaning of life and love, the value of hard work, and what&#039;s really important when everything else has been stripped away.', 'successisajourney.jpg', 1998),
+(21, 'Rich Dad Poor Dad', 16, 'historical fiction, novel', 'The book explodes the myth that you need to earn a high income to be rich and explains the difference between working for money and having your money work for you.\r\nI bought this book on the recommendation of a client, and from page one I was feeling uncomfortable with it. I pushed aside the part of my mind that was shouting &quot;This guy is trashing highly educated people and the working poor!&quot; and I was able to actually become enthusiastic about the message of the book.', 'richdad_poor_dad.jpg', 1997),
+(22, 'Think And Grow Rich', 15, 'historical fiction, novel', 'Timeless information, great words of wisdom, and excellent advice from, perhaps, the greatest personal development book ever published. The principles can be used for anything that you desire. I bought this bestseller from:', 'think_and_grow_rich.jpg', 1937),
+(23, 'Daughters Who Walked This Path', 17, 'historical fiction, novel', 'The book is narrated by Morayo, a young girl from a happy, promising family in the urban center of Ibadan. The novel chronicles Morayo&rsquo;s adolescence, university years, marriage, and eventual motherhood &ndash; all of which are colored by her childhood experience of repeated sexual abuse at the hands of her troubled cousin, Brother Tayo.', 'daughters_who_walked_this_path.jpg', 2012);
 
 --
 -- Indexes for dumped tables
@@ -76,27 +47,8 @@ ALTER TABLE `books`
   ADD PRIMARY KEY (`book_id`),
   ADD KEY `author_table_id` (`author_table_id`);
 
---
--- AUTO_INCREMENT for dumped tables
---
 
---
--- AUTO_INCREMENT for table `books`
---
-ALTER TABLE `books`
-  MODIFY `book_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=63;
-
---
--- Constraints for dumped tables
---
-
---
--- Constraints for table `books`
 --
 ALTER TABLE `books`
   ADD CONSTRAINT `books_ibfk_1` FOREIGN KEY (`author_table_id`) REFERENCES `authors` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
-
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

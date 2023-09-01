@@ -27,12 +27,10 @@ $file_valid_message= "<p class='lead text-success fw-bold p-2 text-center bg-lig
     else{
         $empty_file_message ="<p class='lead text-danger fw-bold p-2 text-center'>Please Select an Image </p>";
     }
-// print_r($_FILES);
-
-// print_r($file_ext);
 
 
 }
+
 ?>
 
 <!DOCTYPE html>
@@ -49,14 +47,15 @@ $file_valid_message= "<p class='lead text-success fw-bold p-2 text-center bg-lig
     <div class=" col-lg-9">
     <form action= "<?php echo $_SERVER['PHP_SELF'] ?>" method="post" enctype="multipart/form-data" >
     <h4 class="text-center text-light"> FILE UPLOAD </h4>
-    <?php if($empty_file_message){
+    <?php
+     if($empty_file_message){
         echo $empty_file_message ;} 
         elseif($invalid_file_type_message) {
             echo $invalid_file_type_message; 
         } elseif($file_valid_message) {
             echo $file_valid_message ;
         }
-        else { echo "<p class='lead text-warning text-center'>Select an image to upload:</p>"; }
+        else { echo "<p class='lead text-warning text-center'>Select an image to upload:</p>"; };
      ?>
     <div class="mb-3 mx-auto">
     <input type="file" name="upload" class="form-control">
@@ -72,7 +71,8 @@ $file_valid_message= "<p class='lead text-success fw-bold p-2 text-center bg-lig
         <img src="<?php echo $target_directory ;?>" alt="file Upload" class="rounded img-fluid text-light" width="auto">
     </div>
     </div>
+    
     </div>
-    </div>
+
 </body>
 </html>

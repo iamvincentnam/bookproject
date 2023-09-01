@@ -119,7 +119,8 @@ table th {
 }
 
 table tr:nth-of-type(even) {
-  background-color: #d2c361e2;
+  background-image: linear-gradient(to right, #d2c361e2,#d2c361e2, #055,#d2c361e2);
+  /*#d2c361e2 */
 }
 
 /* Custom Card */
@@ -256,6 +257,9 @@ $title_of_book  =$summary = $released_year =  $book_selection = $fileName ='';
 
 //initialize empty error variables to be used later
 $title_error =   $summary_error = $released_year_error =  $book_selection_error =$fileupload_error= $fileupload_error2='';
+
+if(isset($_POST['']))
+
 //form Submit 
 if(isset($_POST['submit'])){
   //validate TITLE of Book
@@ -337,8 +341,8 @@ if($statement->execute()){
 
 
 <section class="section col-lg-6  col-sm-12  mx-auto px-4 py-1 shadow bg-success 
-d-none
- section-form">
+
+ section-form d-none">
   <div class="container-fluid">
 <div class="row m-0 ">
             <div class="col-lg-12 mx-auto text-center my-3" id="Book_form_Logo_div">
@@ -355,7 +359,7 @@ d-none
       <div class="row mb-4">
       <div class=" col">
         <label for="titel_of_book" class="form-label  text-dark fs-6">Book Title<sup class='text-danger'>*</sup></label>
-        <input type="text" class="form-control <?php echo $title_error ? 'is-invalid' : null; ?>" id="title_of_book" name="title_of_book" placeholder="Book Title" autocomplete="off" required>
+        <input type="text" class="form-control <?php echo $title_error ? 'is-invalid' : null; ?>" id="title_of_book" name="title_of_book" placeholder="Book Title" autocomplete="off">
       <span class="invalid_span text-danger"> 
         <?php echo $title_error; ?>
       </span>
@@ -364,7 +368,7 @@ d-none
 
       <div class="col">
       <label for="authors" class="form-label  text-dark fs-6">Choose  An Author </label>
-      <select class="form-select <?php echo $book_selection_error ? 'is-invalid' : null; ?>" aria-label="Default select example" name="book_selection" required>
+      <select class="form-select <?php echo $book_selection_error ? 'is-invalid' : null; ?>" aria-label="Default select example" name="book_selection">
   <option selected></option>
   <option value="1">Chinua Achebe</option>
   <option value="2">Ben Okri</option>
@@ -382,6 +386,7 @@ d-none
   <option value="14">Brian Tracy</option>
   <option value="15">Napoleon Hill</option>
   <option value="16">Robert Kiyosaki</option>
+  <option value="17">Yejide Kilanko</option>
 </select>
 <span class="invalid_span text-danger"> 
         <?php echo $book_selection_error; ?>
@@ -392,7 +397,7 @@ d-none
       <!-- div for summary  is here  -->
       <div class="mb-3 col-lg-12">
         <label for="summary" class="form-label  text-dark fs-6">Brief Summary<sup class='text-danger'>*</sup></label>
-        <textarea name="summary" id="summary" rows="5" class="form-control px-4 <?php echo $summary_error ? 'is-invalid' : null; ?>" placeholder="SUMMARY" required></textarea>
+        <textarea name="summary" id="summary" rows="5" class="form-control px-4 <?php echo $summary_error ? 'is-invalid' : null; ?>" placeholder="SUMMARY"></textarea>
         <span class="invalid_span text-danger"> 
         <?php echo $summary_error; ?>
       </span>
@@ -404,7 +409,8 @@ d-none
          <!-- div for Images and input goes here -->
       <div class="col ">
       <label for="fileupload" class="form-label  text-dark fs-6">Please Select an Image</label>
-        <input type="file" name="fileupload" class="form-control <?php echo $fileupload_error ? 'is-invalid' : null; ?>" required>
+        <input type="file" name="fileupload" class="form-control <?php echo $fileupload_error ? 'is-invalid' : null; ?>">
+      <input type="button" value="Upload" name="upload" class="form-control w-25 bg-primary border-none my-2" style="border:none;">
         <span class="invalid_span text-danger"> 
         <?php echo $fileupload_error ; ?>
       </span>
@@ -412,7 +418,7 @@ d-none
 
       <div class="col">
         <label for="Released Year" class="form-label  text-dark fs-6"> Released Year</label>
-        <input type="number" min="1000" max="9999" class="form-control <?php echo $released_year_error ? 'is-invalid' : null; ?>" id="released_year" name="released_year" placeholder="Enter Year Here" autocomplete="off" required>
+        <input type="number" min="1000" max="9999" class="form-control <?php echo $released_year_error ? 'is-invalid' : null; ?>" id="released_year" name="released_year" placeholder="Enter Year Here" autocomplete="off">
         <span class="invalid_span text-danger"> 
         <?php echo $released_year_error; ?>
       </span>

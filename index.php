@@ -43,7 +43,7 @@ $carousel_img_data = fetch_Data_from_Database($carousel_img_query, 'fetchAll');
   <?php endif; ?>
   <table class="table table-striped table-bordered table-hover table-responsive m-0 p-0">
     <thead class="">
-      <tr class="bg-secondary text-white shadow">
+      <tr class="bg-dark text-white shadow">
         <th scope="col" width="5%">S/N</th>
         <th scope="col" width="55%" class="text-center">Title</th>
         <th scope="col" width="30%" class="text-center">Author</th>
