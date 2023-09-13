@@ -1,4 +1,6 @@
+<?php require_once('./access/session.script.php') ;?>
 <?php  include 'db.php';?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -258,8 +260,6 @@ $title_of_book  =$summary = $released_year =  $book_selection = $fileName ='';
 //initialize empty error variables to be used later
 $title_error =   $summary_error = $released_year_error =  $book_selection_error =$fileupload_error= $fileupload_error2='';
 
-if(isset($_POST['']))
-
 //form Submit 
 if(isset($_POST['submit'])){
   //validate TITLE of Book
@@ -410,7 +410,7 @@ if($statement->execute()){
       <div class="col ">
       <label for="fileupload" class="form-label  text-dark fs-6">Please Select an Image</label>
         <input type="file" name="fileupload" class="form-control <?php echo $fileupload_error ? 'is-invalid' : null; ?>">
-      <input type="button" value="Upload" name="upload" class="form-control w-25 bg-primary border-none my-2" style="border:none;">
+      <input type="button" value="Upload" name="upload" class="form-control w-25 bg-secondary text-light border-none my-2" style="border:none;">
         <span class="invalid_span text-danger"> 
         <?php echo $fileupload_error ; ?>
       </span>
